@@ -3,23 +3,19 @@ import "./App.css";
 import { returnsearchcomponent } from "./common-components/CommonDataEntryType";
 import { getAttributes } from "./common-components/CommonFields&Types";
 import {
-  CustomerBuild,
-  MaterialBuild
+  CustomerBuild
 } from "./common-components/CommonQueryBuild";
 
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
-
 import { query } from "./Samplequery";
-
 const customelement = {
   valueEditor: returnsearchcomponent
 };
 
 const styles = {
   queryBuilder: "query-builder", // Root <div> element
-
   ruleGroup: "rules-group-container", // <div> containing the RuleGroup
   combinators: String, // <select> control for combinators
   addRule: "btn-success", // <button> to add a Rule
@@ -52,8 +48,11 @@ class QueryBuild extends React.Component {
 
     this.state = {
       cust_queryarray: [],
-      item_queryarray: []
+      item_queryarray: [],
+      cust_query: {"id":"g-067b2dea-ce63-47d5-8041-3835d8b59005","rules":[],"combinator":"and"},
+      item_query: {"id":"g-067b2dea-ce63-47d5-8041-3835d8b59005","rules":[],"combinator":"and"}
     };
+
     this.cust_attributes = getAttributes("Customer");
     this.customfield = [...this.cust_attributes];
     this.Item_attributes = getAttributes("Material");
@@ -63,12 +62,16 @@ class QueryBuild extends React.Component {
   }
 
   showQuery(query, type) {
+    console.log('type ', type);
+    console.log('query --->  ',query)
     if (type === "Customer") {
       let newarray = this.state.cust_queryarray.concat(query);
       this.setState({ cust_queryarray: newarray });
+      this.setState({ cust_query: query });
     } else if (type === "Material") {
       let newarray1 = this.state.item_queryarray.concat(query);
       this.setState({ item_queryarray: newarray1 });
+      this.setState({ item_query: query });
     }
   }
 
@@ -76,20 +79,35 @@ class QueryBuild extends React.Component {
     console.log("got the callback::" + field);
   }
 
+  saveCustomerQuery = (e) => {
+    console.log('save customer query ---> ', this.state.cust_query);
+  }
+
+  clearCustomerQuery = (e) =>  {
+    console.log('clear customer query ---> ');
+    query = {"id":"g-067b2dea-ce63-47d5-8041-3835d8b59005","rules":[],"combinator":"and"} ;
+    this.setState({ cust_query: query});
+  }
+ 
+
   render() {
+
+    
+
     return (
-      <div>
+      <div >
         <div style={{ display: "flex", justifyContent: "center" }}>
           <label>Case#</label>
-          <input type="text" placeholder="type your case" />
+          <label><strong> Test 123 123413  </strong></label>
         </div>
         <div className="querycontainer">
           <Tabs>
             <TabList>
-              <Tab>Title 1</Tab>
-              <Tab>Title 2</Tab>
+              <Tab>Customer Selection</Tab>
+              <Tab>Item Selection</Tab>
+              <Tab>Allocation Rules</Tab>
+              <Tab>Attachments</Tab>
             </TabList>
-
             <TabPanel>
               <div>
                 <CustomerBuild
@@ -97,32 +115,47 @@ class QueryBuild extends React.Component {
                   styles={styles}
                   cust_attributes={this.customfield}
                   showQuery={this.showQuery}
+                  type='Customer'
+                  query={this.state.cust_query}
                 />
-
-                <Showquery query={this.state.cust_queryarray} />
+                <div className="buttons-placeholder">
+                      <button type="button" className="btn btn-default" onClick={this.saveCustomerQuery}>Save</button>
+                      <span> | </span>
+                      <button type="button" className="btn btn-default" onClick={this.resetCustomerQuery}>Reset</button>
+                </div>
               </div>
             </TabPanel>
             <TabPanel>
               <div>
                 <CustomerBuild
-                 
                   customelement={customelement}
                   styles={styles}
                   cust_attributes={this.Itemfield}
                   showQuery={this.showQuery}
+                  type="Material"
+                  query={this.state.item_query}
                 />
-
-                <Showquery query={this.state.item_queryarray} />
               </div>
+              <div className="buttons-placeholder">
+                      <button type="button" className="btn btn-default">Save</button>
+                      <span> | </span>
+                      <button type="button" className="btn btn-default">Reset</button>
+                </div>
+            </TabPanel>
+            <TabPanel>
+                <div>
+                  Placeholder for Allocation Rules
+                </div>
+            </TabPanel>
+            <TabPanel>
+                <div>
+                  Placeholder for Attachments
+                </div>
             </TabPanel>
           </Tabs>
-
-
-
         </div>
       </div>
     );
   }
 }
-
 export default QueryBuild;

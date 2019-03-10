@@ -188,3 +188,40 @@
   border-radius: 8px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
+
+.query-builder .rule-placeholder {
+  border: 1px solid #bbb;
+  margin: 6px;
+  display:flex;
+}
+
+
+.buttons-placeholder{
+  margin-top:50px;
+  margin-left:50px;
+}
+
+.query-builder .rule .rule-placeholder{
+  display:flex;
+}
+
+button.rule-remove .btn-danger,
+.rbt .clearfix .open,
+.rule-operators,
+.rule-fields{
+  margin: 5px;
+}
+
+.rbt .clearfix .open .has-aux{
+  width: 500px;
+}
+
+.rbt .clearfix .open{
+  width: 400px;
+}
+
+.main-container{
+  background-color: #f8f9fc;
+  width: 100%;
+  
+}
