@@ -6,10 +6,8 @@ const AppOne = ({match}) => {
     return (
     <div>
         <div>{match.params.id}</div>
-        <QueryBuild/>
+        <QueryBuild customerId={match.params.id}/>
     </div>
-    
-    
     )
 }
 

@@ -5,7 +5,7 @@ import { getAttributes } from "./common-components/CommonFields&Types";
 import {
   CustomerBuild
 } from "./common-components/CommonQueryBuild";
-
+import { Listofobjs } from './data/dummydata'
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
@@ -39,8 +39,16 @@ const Showquery = props => {
 
 class QueryBuild extends React.Component {
   constructor(props) {
+    
     super(props);
+    var data = Listofobjs.caselist;
+    console.log(' QueryBuild ',props.customerId)
+    var selectedQuery = data.find(ele => {
+      return ele.id == props.customerId;
+    })
 
+    console.log(' selected query ---> ', selectedQuery);
+    console.log(' dummydata ', data);
     this.showQuery = this.showQuery.bind(this);
 
     let config = {};
@@ -51,8 +59,8 @@ class QueryBuild extends React.Component {
     this.state = {
       cust_queryarray: [],
       item_queryarray: [],
-      cust_query: {"id":"g-067b2dea-ce63-47d5-8041-3835d8b59005","rules":[],"combinator":"and"},
-      item_query: {"id":"g-067b2dea-ce63-47d5-8041-3835d8b59005","rules":[],"combinator":"and"}
+      cust_query: selectedQuery.customerquery,
+      item_query: selectedQuery.itemquery
     };
 
     this.cust_attributes = getAttributes("Customer");
@@ -62,6 +70,7 @@ class QueryBuild extends React.Component {
     console.log("cust are attributers::", this.customfield);
     console.log("item attributes are::", this.Item_attributes);
   }
+
 
   showQuery(query, type) {
     console.log('type ', type);

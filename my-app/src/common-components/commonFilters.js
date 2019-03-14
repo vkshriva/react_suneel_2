@@ -31,13 +31,14 @@ export const CustomerFilter = props => {
 
 export const ItemFilter = props => {
   var selected = [];
+  
   return (
     <Typeahead
       clearButton
       multiple
       limit
       options={Itemoptions}
-      defaultSelected={props.value ? props.value : []}
+      defaultSelected={ []}
       clear
       onChange={s => {
         selected = s;

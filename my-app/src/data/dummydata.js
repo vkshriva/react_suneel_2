@@ -104,7 +104,8 @@ export  var dummyData ={
               field: "GCN",
               value: "678",
               operator: "="
-            },
+            }
+            ,
             {
               id: "r-cbcb0fd6-ca40-446e-a7ea-d3775b43baf1",
               field: "FORM",
