@@ -2,8 +2,15 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom'
 import QueryBuild from './App';
 import App from './SearchApp';
-const AppOne = () => {
-    return <QueryBuild/>
+const AppOne = ({match}) => {
+    return (
+    <div>
+        <div>{match.params.id}</div>
+        <QueryBuild/>
+    </div>
+    
+    
+    )
 }
 
 const SearchAppInstace = () =>{
@@ -16,7 +23,7 @@ const MainApp = ()=> {
             <BrowserRouter>
                 <div>
                     <Route path="/" exact component={SearchAppInstace}></Route>
-                    <Route path="/queryBuild"  component={AppOne}></Route>
+                    <Route path="/queryBuild/:id"  component={AppOne}></Route>
                 </div>
             </BrowserRouter> 
         </div>

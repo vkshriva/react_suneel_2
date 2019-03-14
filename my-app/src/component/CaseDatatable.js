@@ -14,7 +14,7 @@ export default class CaseDataTable extends Component {
                         {this.props.selectedData.map((obj) => {
                             return (
                                 <tr key={obj.id}>
-                                    <td><Link to='/queryBuild'>{`#${obj.id}  #${obj.name}     ${obj.startdate} - ${obj.enddate}`}</Link></td>
+                                    <td><Link to={'/queryBuild/'+obj.id}>{`#${obj.id}  #${obj.name}     ${obj.startdate} - ${obj.enddate}`}</Link></td>
                                     
                                 </tr>
                             )
