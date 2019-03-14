@@ -9,6 +9,8 @@ import {
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
+import {BrowserRouter, Route} from 'react-router-dom';
+
 import { query } from "./Samplequery";
 const customelement = {
   valueEditor: returnsearchcomponent
@@ -155,6 +157,8 @@ class QueryBuild extends React.Component {
           </Tabs>
         </div>
       </div>
+      
+    
     );
   }
 }

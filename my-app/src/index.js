@@ -1,5 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import QueryBuild from "./App";
+import MainApp from './MainApp';
 
-ReactDOM.render(<QueryBuild />, document.getElementById("root"));
+ReactDOM.render(<MainApp />, document.getElementById("root"));
