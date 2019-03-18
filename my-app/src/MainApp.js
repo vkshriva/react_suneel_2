@@ -2,6 +2,9 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom'
 import QueryBuild from './App';
 import App from './SearchApp';
+import SignIn from './Signin';
+
+
 const AppOne = ({match}) => {
     return (
     <div>
@@ -20,7 +23,8 @@ const MainApp = ()=> {
         <div>
             <BrowserRouter>
                 <div>
-                    <Route path="/" exact component={SearchAppInstace}></Route>
+                    <Route path="/" exact component={SignIn}></Route>
+                    <Route path="/searchApp" component={SearchAppInstace}></Route>
                     <Route path="/queryBuild/:id"  component={AppOne}></Route>
                 </div>
             </BrowserRouter> 
