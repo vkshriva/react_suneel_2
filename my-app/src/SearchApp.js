@@ -6,6 +6,15 @@ import AutoSuggestionSearch from './component/AutoSuggestionSearch'
 import CaseDataTable from './component/CaseDatatable'
 import { withRouter } from 'react-router'
 
+import AppBar from '@material-ui/core/AppBar';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -51,6 +60,33 @@ class App extends Component {
     //console.log('App.js dropdownData',this.state.dropDown)
     return (
       <div className="App">
+       <AppBar position="static">
+                    <Toolbar>
+                    <div>
+                        <IconButton
+                        aria-haspopup="true"
+                        color="inherit"
+                        >
+                        <AccountCircle />
+                        </IconButton>
+                        <Menu
+                        id="menu-appbar"
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        >
+                        <MenuItem >Profile</MenuItem>
+                        <MenuItem >My account</MenuItem>
+                        </Menu>
+                        </div>
+                    </Toolbar>
+                </AppBar>
+               
         <AutoSuggestionSearch
           dropDownData={this.state.dropDown}
           handleSelectedCase={this.handleSelectedCase} />
