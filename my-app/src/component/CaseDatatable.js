@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import {Link} from 'react-router-dom';
+import Demo from './Demo';
 
 
 export default class CaseDataTable extends Component {
@@ -24,6 +25,7 @@ export default class CaseDataTable extends Component {
 
                     </tbody>
                 </table>
+                <Demo/>
             </div>
 
 
